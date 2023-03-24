@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Promise基本使用</h1>
+    <hr />
+    <button class="btn">点击抽奖</button>
+    <script>
+      const radom = function (m, n) {
+        return Math.floor(Math.random() * (n - m + 1)) + m;
+      };
+      const btn = document.querySelector(".btn");
+      btn.addEventListener("click", function () {
+        const p = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let n = radom(1, 100);
+            if (n <= 30) {
+              resolve(n);
+            } else {
+              reject(n);
+            }
+          }, 1000);
+        });
+        p.then(
+          (n) => {
+            alert(`恭喜您，中奖了,您的中奖号码为：${n}`);
+          },
+          (n) => {
+            alert(`谢谢惠顾,${(<n></n>)}`);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
